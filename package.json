@@ -16,8 +16,7 @@
     "babel-preset-react": "^6.1.18"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --hot"
   },
   "author": "Kimberly Lum ",
   "license": "ISC",
