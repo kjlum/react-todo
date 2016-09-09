@@ -10,7 +10,7 @@ export default class TodoList extends React.Component {
 	render() {
 		const { todos, onTodoClick } = this.props;
 		return (
-			<ul>
+			<ul className="todo-list">
 				{todos.map(todo =>
 					<Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
 				)}
