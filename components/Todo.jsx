@@ -10,14 +10,14 @@ export default class Todo extends React.Component {
 	render() {
 		const { onClick, completed, text } = this.props;
 		return (
-			<li className="list-item"
+			<div className="list-item"
 				onClick={onClick}
 				style={{
 					textDecoration: completed ? 'line-through' : 'none'
 				}}
 			>
 				{text}
-			</li>
+			</div>
 		);
 	}
 }
