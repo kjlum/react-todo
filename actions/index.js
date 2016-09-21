@@ -6,6 +6,7 @@ let nextTodoId = 0;
 
 export const addTodo = (text) => {
 	const todoId = nextTodoId++;
+	console.log(todoId);
 	const savedCookie = cookie.load(TODO_COOKIE);
 	if (savedCookie) {
 		savedCookie.push({
@@ -53,6 +54,15 @@ export const deleteTodo = (id) => {
 
 export const getTodos = () => {
 	const savedCookie = cookie.load(TODO_COOKIE);
+	if (savedCookie) {
+		for (let i = 0; i < savedCookie.length; i++) {
+			console.log(savedCookie[i]);
+			if (savedCookie[i].id > nextTodoId) {
+				nextTodoId = savedCookie[i].id;
+			}
+		}
+		nextTodoId++;
+	}
 	return {
 		type: 'GET_TODOS',
 		savedCookie
