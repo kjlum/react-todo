@@ -5,24 +5,27 @@ const TODO_COOKIE = 'todos';
 let nextTodoId = 0;
 
 export const addTodo = (text) => {
+	const todoId = nextTodoId++;
 	const savedCookie = cookie.load(TODO_COOKIE);
-	console.log(savedCookie);
 	if (savedCookie) {
-		if (savedCookie.indexOf(text) === -1) {
-			savedCookie.push({ [text]: false  })
-			cookie.save(TODO_COOKIE, savedCookie, { path: '/' });
-		} else {
-			// TODO: dispatch error
-			// return { type: 'ADD_ERROR', text }
-		}
+		savedCookie.push({
+			id: todoId,
+			text,
+			completed: false,
+		});
+		cookie.save(TODO_COOKIE, savedCookie, { path: '/' });
 	} else {
 		const todoArr = [];
-		todoArr.push({ [text]: false })
+		todoArr.push({
+			id: todoId,
+			text,
+			completed: false,
+		})
 		cookie.save(TODO_COOKIE, todoArr, { path: '/' });
 	}
 	return {
 		type: 'ADD_TODO',
-		id: nextTodoId++,
+		id: todoId,
 		text
 	}
 }
@@ -45,5 +48,13 @@ export const deleteTodo = (id) => {
 	return {
 		type: 'DELETE_TODO',
 		id
+	}
+}
+
+export const getTodos = () => {
+	const savedCookie = cookie.load(TODO_COOKIE);
+	return {
+		type: 'GET_TODOS',
+		savedCookie
 	}
 }

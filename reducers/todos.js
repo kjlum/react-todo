@@ -31,6 +31,11 @@ const todos = (state = [], action) => {
 			return state.filter(t => {
 				return (t.id !== action.id);
 			})
+		case 'GET_TODOS':
+			if (!action.savedCookie) {
+				return state;
+			}
+			return action.savedCookie;
 		default:
 			return state;
 	}
