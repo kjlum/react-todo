@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "react": "^15.3.1",
+    "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",
     "react-icon-base": "^2.0.3",
     "react-icons": "^2.2.1",
